@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+main{
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+li{
+  list-style: none;
+}
+.userInput{
+  background-image: url('/images/pattern-bg-mobile.png');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 28px;
+  gap: 8px;
+  position: relative;
+  height: 38%;
+}
+.title{
+  color: white;
+  font-weight: 500;
+  font-size: 24px;
+}
+.inputForm{
+  height: 40px;
+  padding-left: 12px;
+  background-color: white;
+  width: 100%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.input,
+.btn{
+  border: none;
+}
+.input{
+  outline: none;
+  width: 82%;
+}
+.btn{
+  background-color: black;
+  height: 100%;
+  width: 44px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.resultBar{
+  position: absolute;
+  width: 319px;
+  height: 260px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 20px;
+  bottom: -130px;
+  z-index: 99;
+}
+.resultDetails{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.resultDetails h3{
+  text-transform: uppercase;
+  font-size: 10px;
+  color: hsl(0, 0%, 59%);
+  letter-spacing: 2px;
+}
+.resultDetails p{
+  font-weight: 500;
+  font-size: 18px;
+}
+.leaflet-container{
+  height: 72%;
+  width: 100%;
+  z-index: 1;
+}
+.leaflet-control-zoom{
+  display: none;
+}
