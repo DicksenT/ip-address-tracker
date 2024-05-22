@@ -91,3 +91,7 @@ li{
 .leaflet-control-zoom{
   display: none;
 }
+.btn img{
+  width: 12px;
+  height: 12px;
+}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import arrow from '/images/icon-arrow.svg'
 import { MapContainer, TileLayer, Marker, Popup, useMap} from 'react-leaflet'
 import axios from 'axios'
+import cross from '/images/close.png'
 
 function App() {
   const [userInput, setUserInput] = useState('')
@@ -59,7 +60,12 @@ function App() {
               placeholder='Search for any IP address or domain' 
               onChange={(e) => setUserInput(e.currentTarget.value)}
               value={userInput}/>
-              <button type='submit' className='btn'><img src={arrow} alt="" /></button>
+              <button type='submit' className='btn'>{
+                domain.test(userInput) || 
+                ip4.test(userInput) ||
+                ip6.test(userInput) ?
+               ( <img src={arrow} alt="" />) :
+                (<img src={cross} />)}</button>
             </form>
     
           <ul className="resultBar">
