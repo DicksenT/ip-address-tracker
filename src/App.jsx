@@ -16,7 +16,10 @@ function App() {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    setSubmitInput(userInput);
+    const isValid = domain.test(userInput) || ip4.test(userInput) ||ip6.test(userInput)
+    if(isValid){
+      setSubmitInput(userInput)
+    }
   }
 
   const ChangeView = ({center}) =>{
@@ -45,7 +48,7 @@ function App() {
   useEffect(() =>{
     const data = async() =>{
       try{
-        const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_YzeV0kZi36zFEJ8TxUSKqa7cAO9yw&${domain.test(submitInput) ? 'domain=':'ipAddress='}${submitInput}`)
+        const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_gZk61zSRXBeMR3DntHsWhFcS95ix7&${domain.test(submitInput) ? 'domain=':'ipAddress='}${submitInput}`)
         setData(response.data)
         setLocation([response.data.location.lat, response.data.location.lng])
       }
@@ -95,9 +98,9 @@ function App() {
                 <h3>timezone</h3>
                 <p>UTC {data.location.timezone}</p>
               </li>
-              <li className="resultDetails">
+              <li className="resultDetails" style={{padding: 0, border: 'none'}}>
                 <h3>isp</h3>
-                <p>{data.isp}</p>
+                <p className='isp'>{data.isp}</p>
               </li>
           </ul>)}
         </section>
