@@ -100,6 +100,11 @@ li{
   width: 12px;
   height: 12px;
 }
+.isp{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
 
 @media(min-width: 1024px){
   main{
@@ -112,10 +117,11 @@ li{
   }
   .resultBar{
     flex-direction: row;
-    width: 768px;
-    height: 120px;
-    bottom: -60px;
+    width: 800px;
+    height: 80px;
+    bottom: -40px;
     justify-content: space-evenly;
+    
   }
   .leaflet-container{
     height: 75%;
@@ -125,7 +131,7 @@ li{
     height: 52px;
   }
   .inputForm{
-    height: 48px;
+    height: 44px;
     border-radius: 20px;
     align-items: center;
   }
@@ -148,6 +154,14 @@ li{
   .declineBtn{
     cursor: not-allowed;
   }
+  .resultBar p{
+    font-size: 14px;
+  }
+  .resultDetails{
+    padding-right: 28px;
+    border-right: 1px solid gray;
+    width: 20%;
+  }
 }
 @media(min-width:1440px){
   main{
@@ -161,5 +175,15 @@ li{
   }
   .userInput{
     gap: 20px;
+  }
+  .resultBar{
+    height: 120px;
+    bottom: -60px;
+  }
+  .resultBar h3{
+    font-size: 14px;
+  }
+  .resultBar p{
+    font-size: 18px;
   }
 }
