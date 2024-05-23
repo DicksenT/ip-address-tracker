@@ -6,7 +6,7 @@ import cross from '/images/close.png'
 
 function App() {
   const [userInput, setUserInput] = useState('')
-  const [location, setLocation] = useState([22.3852, -81.5639])
+  const [location, setLocation] = useState([34.04779, -118.24118])
   const [data, setData] = useState()
   const [submitInput, setSubmitInput] = useState()
 
@@ -29,13 +29,25 @@ function App() {
     return null
   }
 
+  useEffect(() =>{
+    const data = async() =>{
+    try{
+        const response = await axios.get('https://api.ipify.org?format=json')
+        setSubmitInput(response.data.ip)
+      }
+    catch(error){
+      console.error(error);
+    }
+  }
+    data()
+  },[])
 
   useEffect(() =>{
     const data = async() =>{
       try{
         const response = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_YzeV0kZi36zFEJ8TxUSKqa7cAO9yw&${domain.test(submitInput) ? 'domain=':'ipAddress='}${submitInput}`)
         setData(response.data)
-        console.log(response.data)
+        setLocation([response.data.location.lat, response.data.location.lng])
       }
       catch(error){
         console.error(error);
@@ -44,6 +56,8 @@ function App() {
     }
     data()
   },[submitInput])
+
+  
 
   useEffect(() =>{
     setData(data)
@@ -60,34 +74,34 @@ function App() {
               placeholder='Search for any IP address or domain' 
               onChange={(e) => setUserInput(e.currentTarget.value)}
               value={userInput}/>
-              <button type='submit' className='btn'>{
+              {
                 domain.test(userInput) || 
                 ip4.test(userInput) ||
                 ip6.test(userInput) ?
-               ( <img src={arrow} alt="" />) :
-                (<img src={cross} />)}</button>
+               (<button type='submit' className='btn acceptBtn'> <img src={arrow} alt="" /> </button>) :
+                (<button type='submit' className='btn declineBtn'><img src={cross} /></button>)}
             </form>
     
-          <ul className="resultBar">
+          {data && (<ul className="resultBar">
               <li className="resultDetails">
                 <h3>ip address</h3>
-                <p>192.212.174.101</p>
+                <p>{data.ip}</p>
               </li>
               <li className="resultDetails">
                 <h3>location</h3>
-                <p>Brooklyn, NY 10001</p>
+                <p>{data.location.region}, {data.location.country} {data.location.postalCode}</p>
               </li>
               <li className="resultDetails">
                 <h3>timezone</h3>
-                <p>UTC -05:00</p>
+                <p>UTC {data.location.timezone}</p>
               </li>
               <li className="resultDetails">
                 <h3>isp</h3>
-                <p>SpaceX Starlink</p>
+                <p>{data.isp}</p>
               </li>
-          </ul>
+          </ul>)}
         </section>
-        <MapContainer center={location} zoom={13} scrollWheelZoom={true}>
+        <MapContainer center={location} zoom={0} scrollWheelZoom={true}>
           <ChangeView center={location} zoom={12}/>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
