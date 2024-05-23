@@ -5,6 +5,11 @@
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
 }
+.mainApp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 main{
   width: 375px;
   display: flex;
@@ -22,7 +27,7 @@ li{
   padding: 20px 28px;
   gap: 8px;
   position: relative;
-  height: 38%;
+  height: 300px;
 }
 .title{
   color: white;
@@ -81,10 +86,10 @@ li{
 }
 .resultDetails p{
   font-weight: 500;
-  font-size: 18px;
+  font-size: 15px;
 }
 .leaflet-container{
-  height: 72%;
+  height: 70%;
   width: 100%;
   z-index: 1;
 }
@@ -94,4 +99,67 @@ li{
 .btn img{
   width: 12px;
   height: 12px;
+}
+
+@media(min-width: 1024px){
+  main{
+    width: 1024px;
+  }
+  .userInput{
+    background-image: url('/images/pattern-bg-desktop.png');
+    height: 25%;
+    gap: 12px;
+  }
+  .resultBar{
+    flex-direction: row;
+    width: 768px;
+    height: 120px;
+    bottom: -60px;
+    justify-content: space-evenly;
+  }
+  .leaflet-container{
+    height: 75%;
+  }
+  .inputForm{
+    width: 50%;
+    height: 52px;
+  }
+  .inputForm{
+    height: 48px;
+    border-radius: 20px;
+    align-items: center;
+  }
+  .input{
+    font-size: 20px;
+    height: 85%;
+  }
+  .btn{
+    width: 60px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .btn img{
+    width: 16px;
+    height: 16px;
+  }
+  .acceptBtn{
+    cursor: pointer;
+  }
+  .declineBtn{
+    cursor: not-allowed;
+  }
+}
+@media(min-width:1440px){
+  main{
+    width: 1440px;
+  }
+  .resultBar{
+    width: 1024px;
+  }
+  .inputForm{
+    height: 60px;
+  }
+  .userInput{
+    gap: 20px;
+  }
 }
