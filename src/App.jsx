@@ -60,11 +60,8 @@ function App() {
     data()
   },[submitInput])
 
-  
-
   useEffect(() =>{
     setData(data)
-    console.log(data)
   },[data])
 
   return (
